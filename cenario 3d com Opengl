@@ -1,4 +1,4 @@
-  #include <GL/glut.h>
+ 	  #include <GL/glut.h>
 	#include <stdlib.h>
 	#include <stdio.h>
 	#include <iostream>
@@ -11,6 +11,10 @@ using namespace std;
 
 string a;
 
+
+float R = 1;
+float G = 1;
+float B = 1;
 // Função para tocar uma nota com uma frequência e duração especificadas
 void playNote(int frequency, int duration) {
     Beep(frequency, duration);
@@ -345,7 +349,7 @@ void chao() {
 		GLfloat plasticoPretoAmbiente[] = {0.0, 0.0, 0.0, 1.0};  // Cor ambiente do plástico preto
 		GLfloat plasticoPretoDifusa[] = {0.0, 0.0, 0.0, 1.0};    // Cor difusa do plástico preto
 		GLfloat plasticoPretoEspecular[] = {0.1, 0.1, 0.1, 1.0}; // Cor especular do plástico preto
-		GLfloat brilho = 0.5;                                      // Brilho do material
+		GLfloat brilho = 0.2;                                      // Brilho do material
 		
 		// Aplicação das cores do material
 		glMaterialfv(GL_FRONT, GL_AMBIENT, plasticoPretoAmbiente);
@@ -393,7 +397,7 @@ void chao() {
 		GLfloat plasticoPretoAmbiente[] = {0.0, 0.0, 0.0, 1.0};  // Cor ambiente do plástico preto
 		GLfloat plasticoPretoDifusa[] = {0.0, 0.0, 0.0, 1.0};    // Cor difusa do plástico preto
 		GLfloat plasticoPretoEspecular[] = {0.1, 0.1, 0.1, 1.0}; // Cor especular do plástico preto
-		GLfloat brilho = 1;                                      // Brilho do material
+		GLfloat brilho = 1.5;                                      // Brilho do material
 		
 		// Aplicação das cores do material
 		glMaterialfv(GL_FRONT, GL_AMBIENT, plasticoPretoAmbiente);
@@ -785,7 +789,7 @@ void abajur(){
 			glColor3f(1, 0.30, 0.10);
 	
 	    // Posição do copo
-	    glTranslatef(-0.29, 1,1);
+	    glTranslatef(-0.29, 0.988,1);
 	    glRotatef(90, 1, 0, 0.0); // Gira em torno do eixo Y
 		
 		
@@ -837,6 +841,21 @@ void Estante(){
 			glScaled(0.4, 0.15, 0.5);
 			glutSolidCube(1.0);
 			glPopMatrix();
+			
+			//puxador
+			glPushMatrix();
+			glTranslated(2.08, 0.65, 2);
+			glScaled(0.05, 0.05, 0.1);
+			glutSolidCube(1.0);
+			glPopMatrix();
+			
+				//puxador
+			glPushMatrix();
+			glTranslated(2.08, 0.4, 2);
+			glScaled(0.05, 0.05, 0.1);
+			glutSolidCube(1.0);
+			glPopMatrix();
+	    
 	    
 	    
 	}
@@ -895,6 +914,19 @@ void CompAbajur(){
 	    GLUquadricObj* copoObj2 = gluNewQuadric();
 	    gluCylinder(copoObj2, 0.08, 0.02, 0.05, 32, 32);
 	    gluDeleteQuadric(copoObj2);
+	    
+	     glPopMatrix();
+	     
+	       // Posição do abajur
+	    glTranslatef(2.1,1.3,2);
+	
+	    // Cor do abajur
+	    glColor3f(1, 0, 1);
+		glRotatef(270, 1,0, 0.0); // Gira em torno do eixo Y
+	    // Desenha o corpo do abajur
+	    GLUquadricObj* copoObj3 = gluNewQuadric();
+	    gluCylinder(copoObj3, 0.03, 0.001, 0.003, 32, 32);
+	    gluDeleteQuadric(copoObj3);
 	    
 	     glPopMatrix();
 	     
@@ -1021,7 +1053,197 @@ void violao2(){
 	
 }
 
+
+void cadeira(){
 	
+		//Cores do material
+		GLfloat vidroAmbiente[] = {0.1, 0.1, 0.1, 0.5};   // Cor ambiente do vidro
+		GLfloat vidroDifusa[] = {0.8, 0.8, 0.8, 0.5};     // Cor difusa do vidro
+		GLfloat vidroEspecular[] = {1.0, 1.0, 1.0, 0.5};  // Cor especular do vidro
+		GLfloat brilho = 10;                             // Brilho do material
+		
+		// Aplicação das cores do material
+		glMaterialfv(GL_FRONT, GL_AMBIENT, vidroAmbiente);
+		glMaterialfv(GL_FRONT, GL_DIFFUSE, vidroDifusa);
+		glMaterialfv(GL_FRONT, GL_SPECULAR, vidroEspecular);
+		glMaterialf(GL_FRONT, GL_SHININESS, brilho);
+	
+	    // Posição do abajur
+	    glTranslatef(0.3,0.44,0.5);
+	
+	    // Cor do abajur
+	    glColor3f(1, 0, 1);
+		glRotatef(270, 1,0, 0.0); // Gira em torno do eixo Y
+	    // Desenha o corpo do abajur
+	    GLUquadricObj* copoObj = gluNewQuadric();
+	    gluCylinder(copoObj, 0.03, 0.03, 0.2, 32, 32);
+	    gluDeleteQuadric(copoObj);
+	    
+	     glPopMatrix();
+	     
+	     
+	    // Posição do abajur
+	    glTranslatef(0.32,0.45,0.5);
+	
+	    // Cor do abajur
+	    glColor3f(1, 0, 1);
+		glRotatef(90, 1,1, 0.0); // Gira em torno do eixo Y
+	    // Desenha o corpo do abajur
+	    GLUquadricObj* copoObj1 = gluNewQuadric();
+	    gluCylinder(copoObj1, 0.02, 0.02, 0.2, 32, 32);
+	    gluDeleteQuadric(copoObj1);
+	    
+	     glPopMatrix();
+	       
+	    // Posição do abajur
+	    glTranslatef(0.295,0.45,0.52);
+	
+	    // Cor do abajur
+	    glColor3f(1, 0, 1);
+		glRotatef(45, 1,0, 0.0); // Gira em torno do eixo Y
+	    // Desenha o corpo do abajur
+	    GLUquadricObj* copoObj2 = gluNewQuadric();
+	    gluCylinder(copoObj2, 0.02, 0.02, 0.2, 32, 32);
+	    gluDeleteQuadric(copoObj2);
+	    
+	     glPopMatrix();
+	        
+	    // Posição do abajur
+	    glTranslatef(0.29,0.45,0.48);
+	
+	    // Cor do abajur
+	    glColor3f(1, 0, 1);
+		glRotatef(138, 1,0, 0.0); // Gira em torno do eixo Y
+	    // Desenha o corpo do abajur
+	    GLUquadricObj* copoObj3 = gluNewQuadric();
+	    gluCylinder(copoObj3, 0.02, 0.02, 0.2, 32, 32);
+	    gluDeleteQuadric(copoObj3);
+	    
+	     glPopMatrix();
+	     
+	      // Posição do abajur
+	    glTranslatef(0.285,0.45,0.48);
+	
+	    // Cor do abajur
+	    glColor3f(1, 0, 1);
+		glRotatef(275, -1,1, 0); // Gira em torno do eixo Y
+	    // Desenha o corpo do abajur
+	    GLUquadricObj* copoObj4 = gluNewQuadric();
+	    gluCylinder(copoObj4, 0.02, 0.02, 0.2, 32, 32);
+	    gluDeleteQuadric(copoObj4);
+	    
+	     glPopMatrix();
+	     
+	     
+		     
+	    glColor3f(1, 0.6, 0.4);
+		// Cabeça
+	    glPushMatrix();
+	    glTranslated(0.29,0.3, 0.65);
+	    glutSolidSphere(0.036, 15, 15);
+	    glPopMatrix();
+	    
+	     glColor3f(1, 0.6, 0.4);
+		// Cabeça
+	    glPushMatrix();
+	    glTranslated(0.29,0.3, 0.35);
+	    glutSolidSphere(0.036, 15, 15);
+	    glPopMatrix();
+	     glColor3f(1, 0.6, 0.4);
+		// Cabeça
+	    glPushMatrix();
+	    glTranslated(0.46,0.3, 0.5);
+	    glutSolidSphere(0.036, 15, 15);
+	    glPopMatrix();
+	     glColor3f(1, 0.6, 0.4);
+	// Cabeça
+	    glPushMatrix();
+	    glTranslated(0.15,0.3, 0.5);
+	    glutSolidSphere(0.036, 15, 15);
+	    glPopMatrix();
+	    glColor3f(1, 0.6, 0.4);
+	    
+	    //SUPORTE ENCOSTO
+	    
+	    // Posição do abajur
+	    glTranslatef(0.48,0.65,0.5);
+	
+	    // Cor do abajur
+	    glColor3f(1, 0, 1);
+		glRotatef(270, 1,0, 0.0); // Gira em torno do eixo Y
+	    // Desenha o corpo do abajur
+	    GLUquadricObj* copoObj5 = gluNewQuadric();
+	    gluCylinder(copoObj5, 0.035, 0.035, 0.25, 32, 32);
+	    gluDeleteQuadric(copoObj5);
+	    
+	     glPopMatrix();
+	    
+	     
+	
+	
+}
+
+void Encostos(){
+	
+		// Cores do material
+		GLfloat plasticoPretoAmbiente[] = {0.0, 0.0, 0.0, 1.0};  // Cor ambiente do plástico preto
+		GLfloat plasticoPretoDifusa[] = {0.0, 0.0, 0.0, 1.0};    // Cor difusa do plástico preto
+		GLfloat plasticoPretoEspecular[] = {0.1, 0.1, 0.1, 1.0}; // Cor especular do plástico preto
+		GLfloat brilho = 0.5;                                      // Brilho do material
+		
+		// Aplicação das cores do material
+		glMaterialfv(GL_FRONT, GL_AMBIENT, plasticoPretoAmbiente);
+		glMaterialfv(GL_FRONT, GL_DIFFUSE, plasticoPretoDifusa);
+		glMaterialfv(GL_FRONT, GL_SPECULAR, plasticoPretoEspecular);
+		glMaterialf(GL_FRONT, GL_SHININESS, brilho);
+ 
+	     //ACENTO
+	     glPushMatrix();
+				glTranslated(0.31,0.65,0.5);
+				glScaled(0.35, 0.05, 0.39);
+				glutSolidCube(1.0);
+				glPopMatrix();
+				
+				
+		
+	     //ACENTO escosto
+	     glPushMatrix();
+				glTranslated(0.45,1,0.5);
+				glScaled(0.05, 0.3, 0.35);
+				glutSolidCube(1.0);
+				glPopMatrix();
+				
+				
+	     //ACENTO mao esquerda
+	     glPushMatrix();
+				glTranslated(0.35,0.73,0.7);
+				glScaled(0.03, 0.15, 0.03);
+				glutSolidCube(1.0);
+				glPopMatrix();
+				
+				 glPushMatrix();
+				glTranslated(0.35,0.8,0.7);
+				glScaled(0.2, 0.03, 0.045);
+				glutSolidCube(1.0);
+				glPopMatrix();
+
+
+
+	     //ACENTO mao direita
+	      glPushMatrix();
+				glTranslated(0.35,0.73,0.3);
+				glScaled(0.03, 0.15, 0.03);
+				glutSolidCube(1.0);
+				glPopMatrix();
+				
+				 glPushMatrix();
+				glTranslated(0.35,0.8,0.3);
+				glScaled(0.2, 0.03, 0.045);
+				glutSolidCube(1.0);
+				glPopMatrix();
+
+
+}
 
 void tocaMusica(unsigned char key, int x, int y) {
     int frequencia = 0;
@@ -1074,10 +1296,27 @@ void tocaMusica(unsigned char key, int x, int y) {
             return;
     }
 
-    glutPostRedisplay();  // Solicita uma atualização da tela
+   //glutPostRedisplay();  // Solicita uma atualização da tela
 
     // Toca a nota com a frequência especificada
     Beep(frequencia, duracao);
+}
+
+
+void Cores (int key) {
+    
+
+    switch (key) {
+        case '1':
+                R = 1;
+                G = 0;
+                B = 0;
+            break;
+        default:
+            // Se a tecla pressionada não corresponder a nenhuma nota ou controle de luz, saia da função
+            return;
+    }
+
 }
 
 void iluminacao() {
@@ -1105,7 +1344,7 @@ void iluminacao() {
 	    // Luz da lâmpada
 	    GLfloat luzLampadaAmbiente[] = {0.03, 0.03, 0.03, 1.0}; // Reduzido para evitar cores muito claras
 	    GLfloat luzLampadaDifusa[] = {0.2,0.2, 0.2, 0.2};
-	    GLfloat luzLampadaEspecular[] = {0.7, 0.8, 0.8, 0.8};
+	    GLfloat luzLampadaEspecular[] = {R, G, B, 0.8};
 	    
 	    // Luz ambiente suave
 	    glLightfv(GL_LIGHT0, GL_AMBIENT, luzAmbiente);
@@ -1147,6 +1386,7 @@ void iluminacao() {
 	    glLoadIdentity();
 	    gluLookAt(5.0, 5.0, 5.0, 0, 1, 0, 0.0, 1.0, 0.0);
 	    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+	   
 	}
 	
 	void moveCamera(int key, int x, int y) {
@@ -1162,6 +1402,7 @@ void iluminacao() {
 	
 	    parametrosVisualizacao();
 	    glutPostRedisplay();
+	    
 	}
 	
 void inicializa() {
@@ -1205,6 +1446,7 @@ void inicializa() {
         string++;
     }
 }
+
 	
 	void desenhaPrincipal() {
 		
@@ -1263,7 +1505,7 @@ void inicializa() {
 	    glLightf(GL_LIGHT1, GL_SPOT_CUTOFF, anguloAbertura);
 
 	     
-	
+		glEnable(GL_LIGHT2);
 	  
 
 	    
@@ -1289,14 +1531,17 @@ void inicializa() {
 		copo();
     	tapete();
 		Estante();
-		//lampadaabj();
 		abajur();
 		CompAbajur();
 		violao();
 		violao2();
+		cadeira();
+		Encostos();
+	
 		
 		glColor3f(1.0, 1.0, 1.0);
-
+		
+		
     // Example: Render text at coordinates (10, 10)
     	renderBitmapString(3, 4, GLUT_BITMAP_9_BY_15, "NOTAS MUSICAIS:");
     	renderBitmapString(3.19, 3.8, GLUT_BITMAP_9_BY_15, "Do = c");
@@ -1314,8 +1559,6 @@ void inicializa() {
 
 
  
-		
-		 
         glFlush();
         
 	}
@@ -1335,7 +1578,7 @@ void inicializa() {
 	    glutSpecialFunc(moveCamera);
 	    glutMouseFunc(gerenciaMouse);
 	    glutKeyboardFunc(tocaMusica);
-	  
+	   
 	    inicializa();
 	   
 	
@@ -1344,3 +1587,5 @@ void inicializa() {
 	    glutMainLoop();
 	    return 0;
 	}
+	
+	  
